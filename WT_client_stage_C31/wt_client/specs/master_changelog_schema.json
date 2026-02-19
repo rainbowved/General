@@ -1,0 +1,55 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "WT Master CHANGELOG",
+  "description": "Strict contract for Master->Client CHANGELOG payload.",
+  "oneOf": [
+    {
+      "type": "array",
+      "items": { "$ref": "#/definitions/event" }
+    },
+    {
+      "type": "object",
+      "required": ["events"],
+      "properties": {
+        "events": {
+          "type": "array",
+          "items": { "$ref": "#/definitions/event" }
+        }
+      },
+      "additionalProperties": true
+    }
+  ],
+  "definitions": {
+    "event": {
+      "type": "object",
+      "required": ["event_id", "type"],
+      "properties": {
+        "event_id": { "type": "string", "minLength": 1 },
+        "type": {
+          "type": "string",
+          "enum": [
+            "WORLD_MOVE",
+            "SYS_TURN_BEGIN",
+            "SYS_TURN_END",
+            "SYS_RNG_INIT",
+            "SYS_RNG_ADVANCE",
+            "MODE_SET",
+            "INVENTORY_ADD_INSTANCES",
+            "INVENTORY_REMOVE_INSTANCES",
+            "encounter.select",
+            "combat.start",
+            "combat.end",
+            "loot.generate",
+            "action.request",
+            "craft.request"
+          ]
+        },
+        "payload": {},
+        "ts": {},
+        "turn": {},
+        "turn_no": {}
+      },
+      "additionalProperties": true
+    }
+  }
+}

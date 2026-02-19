@@ -1,0 +1,310 @@
+{
+  "state": {
+    "session": {
+      "active_turn": 10,
+      "time_ticks": 10
+    },
+    "cursor": {
+      "seen_event_ids": []
+    },
+    "rng": {
+      "streams": {
+        "RNG_LOOT": {
+          "counter": 0
+        }
+      }
+    }
+  },
+  "events": [
+    {
+      "event_id": "sys-turn-begin-000001",
+      "type": "SYS_TURN_BEGIN",
+      "payload": {
+        "turn": 1
+      }
+    },
+    {
+      "event_id": "act-000001-PROCEED",
+      "type": "ACTION_APPLIED",
+      "payload": {
+        "type": "node_action",
+        "action_id": "PROCEED"
+      }
+    },
+    {
+      "event_id": "sys-time-00000001",
+      "type": "SYS_TIME_ADVANCE",
+      "payload": {
+        "dt_ticks": 1
+      }
+    },
+    {
+      "event_id": "sys-turn-end-000001",
+      "type": "SYS_TURN_END",
+      "payload": {
+        "turn": 1
+      }
+    },
+    {
+      "event_id": "sys-turn-begin-000002",
+      "type": "SYS_TURN_BEGIN",
+      "payload": {
+        "turn": 2
+      }
+    },
+    {
+      "event_id": "act-000002-REST",
+      "type": "ACTION_APPLIED",
+      "payload": {
+        "type": "node_action",
+        "action_id": "REST"
+      }
+    },
+    {
+      "event_id": "sys-time-00000002",
+      "type": "SYS_TIME_ADVANCE",
+      "payload": {
+        "dt_ticks": 1
+      }
+    },
+    {
+      "event_id": "sys-turn-end-000002",
+      "type": "SYS_TURN_END",
+      "payload": {
+        "turn": 2
+      }
+    },
+    {
+      "event_id": "sys-turn-begin-000003",
+      "type": "SYS_TURN_BEGIN",
+      "payload": {
+        "turn": 3
+      }
+    },
+    {
+      "event_id": "act-000003-WATER_REFILL",
+      "type": "ACTION_APPLIED",
+      "payload": {
+        "type": "node_action",
+        "action_id": "WATER_REFILL"
+      }
+    },
+    {
+      "event_id": "sys-time-00000003",
+      "type": "SYS_TIME_ADVANCE",
+      "payload": {
+        "dt_ticks": 1
+      }
+    },
+    {
+      "event_id": "sys-turn-end-000003",
+      "type": "SYS_TURN_END",
+      "payload": {
+        "turn": 3
+      }
+    },
+    {
+      "event_id": "sys-turn-begin-000004",
+      "type": "SYS_TURN_BEGIN",
+      "payload": {
+        "turn": 4
+      }
+    },
+    {
+      "event_id": "act-000004-move",
+      "type": "ACTION_APPLIED",
+      "payload": {
+        "type": "node_action",
+        "action_id": "move"
+      }
+    },
+    {
+      "event_id": "sys-time-00000004",
+      "type": "SYS_TIME_ADVANCE",
+      "payload": {
+        "dt_ticks": 1
+      }
+    },
+    {
+      "event_id": "sys-turn-end-000004",
+      "type": "SYS_TURN_END",
+      "payload": {
+        "turn": 4
+      }
+    },
+    {
+      "event_id": "sys-turn-begin-000005",
+      "type": "SYS_TURN_BEGIN",
+      "payload": {
+        "turn": 5
+      }
+    },
+    {
+      "event_id": "act-000005-craft",
+      "type": "ACTION_APPLIED",
+      "payload": {
+        "type": "node_action",
+        "action_id": "craft"
+      }
+    },
+    {
+      "event_id": "sys-time-00000005",
+      "type": "SYS_TIME_ADVANCE",
+      "payload": {
+        "dt_ticks": 1
+      }
+    },
+    {
+      "event_id": "sys-turn-end-000005",
+      "type": "SYS_TURN_END",
+      "payload": {
+        "turn": 5
+      }
+    },
+    {
+      "event_id": "sys-turn-begin-000006",
+      "type": "SYS_TURN_BEGIN",
+      "payload": {
+        "turn": 6
+      }
+    },
+    {
+      "event_id": "act-000006-PROCEED",
+      "type": "ACTION_APPLIED",
+      "payload": {
+        "type": "node_action",
+        "action_id": "PROCEED"
+      }
+    },
+    {
+      "event_id": "sys-time-00000006",
+      "type": "SYS_TIME_ADVANCE",
+      "payload": {
+        "dt_ticks": 1
+      }
+    },
+    {
+      "event_id": "sys-turn-end-000006",
+      "type": "SYS_TURN_END",
+      "payload": {
+        "turn": 6
+      }
+    },
+    {
+      "event_id": "sys-turn-begin-000007",
+      "type": "SYS_TURN_BEGIN",
+      "payload": {
+        "turn": 7
+      }
+    },
+    {
+      "event_id": "act-000007-REST",
+      "type": "ACTION_APPLIED",
+      "payload": {
+        "type": "node_action",
+        "action_id": "REST"
+      }
+    },
+    {
+      "event_id": "sys-time-00000007",
+      "type": "SYS_TIME_ADVANCE",
+      "payload": {
+        "dt_ticks": 1
+      }
+    },
+    {
+      "event_id": "sys-turn-end-000007",
+      "type": "SYS_TURN_END",
+      "payload": {
+        "turn": 7
+      }
+    },
+    {
+      "event_id": "sys-turn-begin-000008",
+      "type": "SYS_TURN_BEGIN",
+      "payload": {
+        "turn": 8
+      }
+    },
+    {
+      "event_id": "act-000008-WATER_REFILL",
+      "type": "ACTION_APPLIED",
+      "payload": {
+        "type": "node_action",
+        "action_id": "WATER_REFILL"
+      }
+    },
+    {
+      "event_id": "sys-time-00000008",
+      "type": "SYS_TIME_ADVANCE",
+      "payload": {
+        "dt_ticks": 1
+      }
+    },
+    {
+      "event_id": "sys-turn-end-000008",
+      "type": "SYS_TURN_END",
+      "payload": {
+        "turn": 8
+      }
+    },
+    {
+      "event_id": "sys-turn-begin-000009",
+      "type": "SYS_TURN_BEGIN",
+      "payload": {
+        "turn": 9
+      }
+    },
+    {
+      "event_id": "act-000009-move",
+      "type": "ACTION_APPLIED",
+      "payload": {
+        "type": "node_action",
+        "action_id": "move"
+      }
+    },
+    {
+      "event_id": "sys-time-00000009",
+      "type": "SYS_TIME_ADVANCE",
+      "payload": {
+        "dt_ticks": 1
+      }
+    },
+    {
+      "event_id": "sys-turn-end-000009",
+      "type": "SYS_TURN_END",
+      "payload": {
+        "turn": 9
+      }
+    },
+    {
+      "event_id": "sys-turn-begin-000010",
+      "type": "SYS_TURN_BEGIN",
+      "payload": {
+        "turn": 10
+      }
+    },
+    {
+      "event_id": "act-000010-craft",
+      "type": "ACTION_APPLIED",
+      "payload": {
+        "type": "node_action",
+        "action_id": "craft"
+      }
+    },
+    {
+      "event_id": "sys-time-00000010",
+      "type": "SYS_TIME_ADVANCE",
+      "payload": {
+        "dt_ticks": 1
+      }
+    },
+    {
+      "event_id": "sys-turn-end-000010",
+      "type": "SYS_TURN_END",
+      "payload": {
+        "turn": 10
+      }
+    }
+  ]
+}

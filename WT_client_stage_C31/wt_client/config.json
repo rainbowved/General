@@ -1,0 +1,5 @@
+{
+  "datapack_path": "./WT_data_release_candidate.zip",
+  "save_root": "./saves",
+  "logs_dir": "./.wt_logs"
+}
