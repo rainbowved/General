@@ -3,8 +3,29 @@ import os
 import subprocess
 from pathlib import Path
 
-CI_LEVEL = os.getenv('CI_LEVEL', 'probe')
-PHASE_TARGET = int(os.getenv('PHASE_TARGET', '0'))
+VALID_CI_LEVELS = {'probe', 'full'}
+
+
+def parse_ci_level() -> str:
+    value = os.getenv('CI_LEVEL', 'probe').strip().lower()
+    if value not in VALID_CI_LEVELS:
+        raise SystemExit(f"[ERROR] CI_LEVEL must be one of {sorted(VALID_CI_LEVELS)}, got: {value!r}")
+    return value
+
+
+def parse_phase_target() -> int:
+    raw = os.getenv('PHASE_TARGET', '0').strip()
+    try:
+        value = int(raw)
+    except ValueError as exc:
+        raise SystemExit(f"[ERROR] PHASE_TARGET must be an integer, got: {raw!r}") from exc
+    if value < 0:
+        raise SystemExit(f"[ERROR] PHASE_TARGET must be >= 0, got: {value}")
+    return value
+
+
+CI_LEVEL = parse_ci_level()
+PHASE_TARGET = parse_phase_target()
 
 LOGS = Path('_logs')
 LOGS.mkdir(parents=True, exist_ok=True)
