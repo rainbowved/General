@@ -1,16 +1,16 @@
-# CANON MAP (PHASE 0)
+# CANON MAP (Stage C verified)
 
 | Domain | Anchor(s) | Notes |
 |---|---|---|
-| Tags | B03 | Namespaces and references map to strict validation later. |
-| Items | B04 | Item IDs and tag links governed by canonical references. |
-| Loot | B24 | Coffers/pools/row ordering and mapping coverage invariants. |
-| Recipes | B21 | Strict ration craft rules and deterministic slot semantics. |
-| Quests | B18 | Archive delivery objective and reward-via-coffer constraints. |
-| POI | B20 | Option requires `loot_coffer_id`, open-once behavior. |
-| Luck | B22 | Bonus pool limits by item class (no equip/weapon/armor). |
-| RNG | B14 | Keyed deterministic RNG only, no ambient entropy. |
-| Idempotency | B14 | Event-based replay safety and stable deterministic outputs. |
+| Tags | `B03`, `B03.EVENT_ID_AND_ORDERING` | Stable event ordering and deterministic IDs for canonical references. |
+| Items | `B14` | Inventory/item domain and item-centric runtime contracts. |
+| Loot | `B24`, `B24.LOOT.CANON.01` | LOOT/COFFER/POOLS canonical algorithm and data shape. |
+| Recipes | `B21` | Field ration recipes: strict slots/time and deterministic craft constraints. |
+| Quests | `B18` | Archive objective and reward-via-coffer constraints. |
+| POI | `B20` | POI interaction contract requiring loot coffer linkage. |
+| Luck | `B22`, `B22.LUCK.CANON.03` | LUCK effects and constraints for bonus loot slots. |
+| RNG | `B03.RNG_STATE_POLICY`, `B04.FIXED_POINT` | Keyed deterministic RNG policy and integer-only probability math. |
+| Idempotency | `B03.EVENT_ID_AND_ORDERING` | `applied_event_ids` and stable event ordering for replay/idempotency. |
 
 ## Must-have anchors checklist
 - B21

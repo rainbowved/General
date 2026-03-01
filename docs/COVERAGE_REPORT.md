@@ -10,7 +10,7 @@
 ## Coverage by Anchor (Bxx)
 | anchor | rule_count |
 |---|---|
-| B24 | 8 |
+| B24 | 9 |
 | B21 | 4 |
 | B18 | 5 |
 | B20 | 3 |
