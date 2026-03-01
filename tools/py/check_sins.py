@@ -7,6 +7,11 @@ from pathlib import Path
 TEXT_EXT = {'.py', '.sh', '.ps1', '.sql', '.json', '.md', '.cs', '.yml', '.yaml', '.txt'}
 EXCLUDE_DIRS = {'.git', '_out', '__pycache__', '.venv'}
 EXCLUDE_FILES = {'tools/py/check_sins.py', 'docs/SINS_REPORT.md'}
+EXCLUDE_PATH_PREFIXES = {
+    '_logs/',
+    'client/_out/',
+    'content/dist/',
+}
 
 CANONICAL_PATH_HINTS = (
     'client/',
@@ -44,12 +49,23 @@ def rel_posix(path: Path, root: Path) -> str:
 
 def iter_files(root: Path):
     for dirpath, dirnames, filenames in os.walk(root):
-        dirnames[:] = [d for d in dirnames if d not in EXCLUDE_DIRS]
+        current = Path(dirpath)
+        kept_dirs = []
+        for d in dirnames:
+            if d in EXCLUDE_DIRS:
+                continue
+            rel_dir = rel_posix(current / d, root)
+            if any(rel_dir.startswith(prefix) for prefix in EXCLUDE_PATH_PREFIXES):
+                continue
+            kept_dirs.append(d)
+        dirnames[:] = kept_dirs
         for fn in filenames:
             p = Path(dirpath) / fn
             if p.suffix.lower() not in TEXT_EXT:
                 continue
             rel = rel_posix(p, root)
+            if any(rel.startswith(prefix) for prefix in EXCLUDE_PATH_PREFIXES):
+                continue
             if rel in EXCLUDE_FILES or rel.startswith('tools/src/CheckSins/'):
                 continue
             yield p
