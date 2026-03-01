@@ -1,0 +1,15 @@
+{
+  "runtime_db": "content/dist/<pack_version>/content.db",
+  "required_tables": [
+    "tags",
+    "items",
+    "loot_coffers",
+    "loot_pools",
+    "loot_pool_rows",
+    "coffer_pool_map",
+    "recipes",
+    "quests",
+    "pois"
+  ],
+  "notes": "Runtime contract placeholder for PHASE 1; strict runtime checks begin with build implementation in PHASE 3."
+}

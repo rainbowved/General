@@ -1,0 +1,97 @@
+{
+  "tags": [
+    {
+      "tag_id": "tag.food",
+      "namespace": "food",
+      "code": "ration"
+    }
+  ],
+  "items": [
+    {
+      "item_id": "item.ration.a",
+      "item_class": "consumable",
+      "name": "Ration A"
+    }
+  ],
+  "loot_coffers": [
+    {
+      "coffer_id": "coffer.start",
+      "name": "Starter"
+    }
+  ],
+  "loot_pools": [
+    {
+      "pool_id": "pool.start",
+      "name": "Starter Pool"
+    }
+  ],
+  "loot_pool_rows": [
+    {
+      "pool_id": "pool.start",
+      "row_id": 1,
+      "item_id": "item.ration.a",
+      "weight_bp": 10000,
+      "qty": 1
+    }
+  ],
+  "coffer_pool_map": [
+    {
+      "coffer_id": "coffer.start",
+      "pool_id": "pool.start",
+      "ordering_key": 1
+    }
+  ],
+  "recipes": [
+    {
+      "recipe_id": "recipe.ration",
+      "name": "Ration Recipe",
+      "time_sec": 60
+    }
+  ],
+  "recipe_slots": [
+    {
+      "recipe_id": "recipe.ration",
+      "slot_no": 1,
+      "item_id": "item.ration.a",
+      "qty": 1
+    },
+    {
+      "recipe_id": "recipe.ration",
+      "slot_no": 2,
+      "item_id": "item.ration.a",
+      "qty": 1
+    },
+    {
+      "recipe_id": "recipe.ration",
+      "slot_no": 3,
+      "item_id": "item.ration.a",
+      "qty": 1
+    }
+  ],
+  "quests": [
+    {
+      "quest_id": "quest.archive.1",
+      "objective_type": "DELIVER",
+      "reward_coffer_id": "coffer.start"
+    }
+  ],
+  "quest_objective_filter_tags": [
+    {
+      "quest_id": "quest.archive.1",
+      "tag_id": "tag.food"
+    }
+  ],
+  "pois": [
+    {
+      "poi_id": "poi.camp",
+      "option_text": "Open",
+      "loot_coffer_id": "",
+      "open_once": 1
+    }
+  ],
+  "luck_bonus_pool": [
+    {
+      "item_class": "consumable"
+    }
+  ]
+}
