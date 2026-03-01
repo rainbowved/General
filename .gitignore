@@ -1,0 +1,10 @@
+# Generated CI logs and status artifacts
+_logs/
+
+# Runtime/build outputs
+_out/
+client/_out/
+content/dist/
+
+# Local artifact bundles
+artifacts/*.zip

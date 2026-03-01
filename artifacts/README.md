@@ -1,3 +1,6 @@
 # Artifacts
 
-- `general_repo_snapshot.zip` — zip snapshot of repository content (excluding `.git` and `_out`).
+This directory is for local/generated artifact bundles (for example repository snapshots).
+
+- Artifact bundles (`*.zip`) are intentionally gitignored.
+- Keep only lightweight documentation in git; generate archives locally when needed.
