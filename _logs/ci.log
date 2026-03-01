@@ -1,6 +1,6 @@
 == CI v3.7 ==
-CI_LEVEL=full PHASE_TARGET=7
--- Required steps: schema=1 validate=1 build=1 client=1 det=1 golden=1 coverage_gate=1 narrative=1
+CI_LEVEL=probe PHASE_TARGET=0
+-- Required steps: schema=0 validate=0 build=0 client=0 det=0 golden=0 coverage_gate=0 narrative=0
 
 [STEP] check_sins
 [CMD]  bash tools/check_sins.sh

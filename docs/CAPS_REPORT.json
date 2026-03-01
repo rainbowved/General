@@ -10,21 +10,28 @@
     "available": true,
     "version": "Python 3.14.0"
   },
-  "sqlite_cli": {
-    "available": true,
-    "version": "3.45.1"
-  },
   "git": {
     "available": true,
     "version": "git version 2.43.0"
+  },
+  "sqlite_python_module": {
+    "available": true,
+    "version": "3.45.1"
+  },
+  "sqlite_cli": {
+    "available": true,
+    "version": "3.45.1 2024-01-30 16:01:20 e876e51a0ed5c5b3126f52e532044363a014bc594cfefa87ffb5b82257ccalt1 (64-bit)"
+  },
+  "rg": {
+    "available": true,
+    "version": "ripgrep 14.1.0"
   },
   "zip_unpack": true,
   "zip_pack": true,
   "os_hint": "linux",
   "notes": [
-    "dotnet command is not available in this environment.",
-    "Concept pack zip unpack+repack probe completed successfully.",
-    "Terminal commands execute normally; MODE A is supported.",
-    "Selected stack is Python because dotnet is unavailable and python is available."
+    "Values captured from direct command execution in this environment.",
+    "CI probe executed with CI_LEVEL=probe PHASE_TARGET=0 via tools/ci.sh.",
+    "dotnet is not available in current environment (STACK_PYTHON)."
   ]
 }
