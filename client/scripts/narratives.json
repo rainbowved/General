@@ -1,0 +1,17 @@
+{
+  "poi.camp.open": [
+    "Camp chest creaks; ration cache intact.",
+    "You pry open the camp coffer and find preserved rations.",
+    "A weathered lock yields; supplies are still usable."
+  ],
+  "archive.accept": [
+    "Archivist marks your ledger with a delivery seal.",
+    "The archive clerk records your task in careful script.",
+    "A wax-stamped order sends you to recover field goods."
+  ],
+  "archive.submit": [
+    "Delivered crates are logged and shelved by lot number.",
+    "Quartermaster signs receipt; reward coffer is released.",
+    "Archive runners verify tags, then unlock your reward."
+  ]
+}

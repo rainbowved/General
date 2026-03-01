@@ -1,0 +1,30 @@
+{
+  "fs_write": true,
+  "fs_read": true,
+  "terminal_exec": true,
+  "dotnet": {
+    "available": false,
+    "version": null
+  },
+  "python": {
+    "available": true,
+    "version": "Python 3.14.0"
+  },
+  "sqlite_cli": {
+    "available": true,
+    "version": "3.45.1"
+  },
+  "git": {
+    "available": true,
+    "version": "git version 2.43.0"
+  },
+  "zip_unpack": true,
+  "zip_pack": true,
+  "os_hint": "linux",
+  "notes": [
+    "dotnet command is not available in this environment.",
+    "Concept pack zip unpack+repack probe completed successfully.",
+    "Terminal commands execute normally; MODE A is supported.",
+    "Selected stack is Python because dotnet is unavailable and python is available."
+  ]
+}

@@ -1,0 +1,66 @@
+{
+  "run_id": "determinism-001",
+  "commands_total": 5,
+  "inventory": {
+    "item.ration.a": 2
+  },
+  "grants": [
+    {
+      "item_id": "item.ration.a",
+      "qty": 1,
+      "source": "LOOT_OPEN"
+    },
+    {
+      "item_id": "item.ration.a",
+      "qty": 1,
+      "source": "LOOT_OPEN"
+    }
+  ],
+  "steps": [
+    {
+      "step": 1,
+      "op": "new-run",
+      "ok": true
+    },
+    {
+      "step": 2,
+      "op": "accept-quest",
+      "quest_id": "quest.archive.1",
+      "narrative": "The archive clerk records your task in careful script.",
+      "ok": true
+    },
+    {
+      "step": 3,
+      "op": "open-poi",
+      "poi_id": "poi.camp",
+      "grant": {
+        "item_id": "item.ration.a",
+        "qty": 1,
+        "source": "LOOT_OPEN"
+      },
+      "narrative": "Camp chest creaks; ration cache intact.",
+      "ok": true
+    },
+    {
+      "step": 4,
+      "op": "submit-quest",
+      "quest_id": "quest.archive.1",
+      "grant": {
+        "item_id": "item.ration.a",
+        "qty": 1,
+        "source": "LOOT_OPEN"
+      },
+      "narrative": "Quartermaster signs receipt; reward coffer is released.",
+      "ok": true
+    },
+    {
+      "step": 5,
+      "op": "show-inventory",
+      "inventory": {
+        "item.ration.a": 2
+      },
+      "ok": true
+    }
+  ],
+  "state_hash": "30a22a71f0a420f533aaea56228bb1c8bda854f2ca4258cf6c83a5379bb05337"
+}

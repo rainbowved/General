@@ -1,0 +1,10 @@
+{
+  "run_id": "determinism-001",
+  "commands": [
+    {"op": "new-run"},
+    {"op": "accept-quest", "quest_id": "quest.archive.1"},
+    {"op": "open-poi", "poi_id": "poi.camp"},
+    {"op": "submit-quest", "quest_id": "quest.archive.1"},
+    {"op": "show-inventory"}
+  ]
+}

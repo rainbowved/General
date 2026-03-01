@@ -1,0 +1,7 @@
+{
+  "fixture": "tools/fixtures/seed/pack_seed.json",
+  "ok": true,
+  "error_count": 0,
+  "errors": [],
+  "sha256": "0cdb9fdeaf4133cd66654410c344de311d2027c93886bac8a526b2423a984401"
+}

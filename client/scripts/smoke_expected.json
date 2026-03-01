@@ -1,0 +1,66 @@
+{
+  "run_id": "smoke-001",
+  "commands_total": 5,
+  "inventory": {
+    "item.ration.a": 2
+  },
+  "grants": [
+    {
+      "item_id": "item.ration.a",
+      "qty": 1,
+      "source": "LOOT_OPEN"
+    },
+    {
+      "item_id": "item.ration.a",
+      "qty": 1,
+      "source": "LOOT_OPEN"
+    }
+  ],
+  "steps": [
+    {
+      "step": 1,
+      "op": "new-run",
+      "ok": true
+    },
+    {
+      "step": 2,
+      "op": "accept-quest",
+      "quest_id": "quest.archive.1",
+      "narrative": "The archive clerk records your task in careful script.",
+      "ok": true
+    },
+    {
+      "step": 3,
+      "op": "open-poi",
+      "poi_id": "poi.camp",
+      "grant": {
+        "item_id": "item.ration.a",
+        "qty": 1,
+        "source": "LOOT_OPEN"
+      },
+      "narrative": "Camp chest creaks; ration cache intact.",
+      "ok": true
+    },
+    {
+      "step": 4,
+      "op": "submit-quest",
+      "quest_id": "quest.archive.1",
+      "grant": {
+        "item_id": "item.ration.a",
+        "qty": 1,
+        "source": "LOOT_OPEN"
+      },
+      "narrative": "Archive runners verify tags, then unlock your reward.",
+      "ok": true
+    },
+    {
+      "step": 5,
+      "op": "show-inventory",
+      "inventory": {
+        "item.ration.a": 2
+      },
+      "ok": true
+    }
+  ],
+  "state_hash": "7dadc2dbc868985bd1dd3274e23c1b301c6855da81eda50304cbff2f8c4d621d"
+}

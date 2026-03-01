@@ -1,0 +1,18 @@
+{
+  "tables": {
+    "tags": ["tag_id:TEXT", "namespace:TEXT", "code:TEXT"],
+    "items": ["item_id:TEXT", "item_class:TEXT", "name:TEXT"],
+    "item_tags": ["item_id:TEXT", "tag_id:TEXT"],
+    "loot_coffers": ["coffer_id:TEXT", "name:TEXT"],
+    "loot_pools": ["pool_id:TEXT", "name:TEXT"],
+    "loot_pool_rows": ["pool_id:TEXT", "row_id:INTEGER", "item_id:TEXT", "weight_bp:INTEGER", "qty:INTEGER"],
+    "coffer_pool_map": ["coffer_id:TEXT", "pool_id:TEXT", "ordering_key:INTEGER"],
+    "recipes": ["recipe_id:TEXT", "name:TEXT", "time_sec:INTEGER"],
+    "recipe_slots": ["recipe_id:TEXT", "slot_no:INTEGER", "item_id:TEXT", "qty:INTEGER"],
+    "quests": ["quest_id:TEXT", "objective_type:TEXT", "reward_coffer_id:TEXT"],
+    "quest_objective_filter_tags": ["quest_id:TEXT", "tag_id:TEXT"],
+    "pois": ["poi_id:TEXT", "option_text:TEXT", "loot_coffer_id:TEXT", "open_once:INTEGER"]
+  },
+  "forbidden_types": ["REAL", "NUMERIC"],
+  "forbidden_column_name_patterns": ["*_csv", "*_json"]
+}
