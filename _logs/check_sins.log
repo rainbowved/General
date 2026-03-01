@@ -1,7 +1,1 @@
-== check_sins ==
-[WARN] dotnet unavailable; using python-stack bootstrap scanner
-[METRIC] begin_blocks=1105
-[PASS] check_sins bootstrap
- scanner
-[METRIC] begin_blocks=1105
-[PASS] check_sins bootstrap
+[PASS] check_sins

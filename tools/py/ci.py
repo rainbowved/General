@@ -74,11 +74,13 @@ def main():
     w("-- Required steps: schema={schema} validate={validate} build={build} client={client} det={det} golden={golden} coverage_gate={coverage_gate} narrative={narrative}".format(**req))
 
     # check_sins
-    if has('tools/check_sins.sh'):
+    if has('tools/py/check_sins.py'):
+        run_step('check_sins', 'python3 tools/py/check_sins.py --report docs/SINS_REPORT.md')
+    elif has('tools/check_sins.sh'):
         run_step('check_sins', 'bash tools/check_sins.sh')
     else:
         w('[STEP] check_sins')
-        w('[WARN] tools/check_sins.sh missing')
+        w('[WARN] check_sins tool missing')
         step_status('check_sins', 'MISSING')
     require_if(req['check_sins'], 'check_sins')
 
