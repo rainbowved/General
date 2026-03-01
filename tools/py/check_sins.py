@@ -38,25 +38,30 @@ NETWORK_PATTERNS = [
 ]
 
 
+def rel_posix(path: Path, root: Path) -> str:
+    return path.resolve().relative_to(root.resolve()).as_posix()
+
+
 def iter_files(root: Path):
     for dirpath, dirnames, filenames in os.walk(root):
         dirnames[:] = [d for d in dirnames if d not in EXCLUDE_DIRS]
         for fn in filenames:
             p = Path(dirpath) / fn
-            ps = p.as_posix()
-            if ps in EXCLUDE_FILES or ps.startswith('tools/src/CheckSins/'):
+            if p.suffix.lower() not in TEXT_EXT:
                 continue
-            if p.suffix.lower() in TEXT_EXT:
-                yield p
+            rel = rel_posix(p, root)
+            if rel in EXCLUDE_FILES or rel.startswith('tools/src/CheckSins/'):
+                continue
+            yield p
 
 
-def is_canonical_path(p: Path) -> bool:
-    s = p.as_posix()
-    return any(h in s for h in CANONICAL_PATH_HINTS)
+def is_canonical_path(rel_path: str) -> bool:
+    return any(rel_path.startswith(h) for h in CANONICAL_PATH_HINTS)
 
 
-def scan_file(p: Path):
+def scan_file(p: Path, root: Path):
     findings = []
+    rel = rel_posix(p, root)
     text = p.read_text(encoding='utf-8', errors='ignore')
     for i, line in enumerate(text.splitlines(), start=1):
         l = line.strip()
@@ -65,28 +70,28 @@ def scan_file(p: Path):
 
         for pat in SECRET_PATTERNS:
             if pat.search(line) and 're.compile(' not in line:
-                findings.append((p, i, 'SECRET', line.strip()))
+                findings.append((rel, i, 'SECRET', line.strip()))
 
         for pat in ENTROPY_PATTERNS:
             if pat.search(line):
-                findings.append((p, i, 'ENTROPY', line.strip()))
+                findings.append((rel, i, 'ENTROPY', line.strip()))
 
         for pat in NETWORK_PATTERNS:
             if pat.search(line):
-                findings.append((p, i, 'NETWORK', line.strip()))
+                findings.append((rel, i, 'NETWORK', line.strip()))
 
-        if is_canonical_path(p):
+        if is_canonical_path(rel):
             lower = l.lower()
             if p.suffix.lower() in {'.py', '.cs', '.sql', '.sh', '.ps1'}:
                 if 'float' in lower:
                     if not lower.startswith('#') and 'no float' not in lower and 'без float' not in lower:
-                        findings.append((p, i, 'FLOAT', line.strip()))
+                        findings.append((rel, i, 'FLOAT', line.strip()))
 
         if 'PHASE 7 DONE' in line:
-            status = Path('docs/PHASE_STATUS.md')
+            status = root / 'docs/PHASE_STATUS.md'
             has_refs = status.exists() and 'VERIFY_LOG' in status.read_text(encoding='utf-8', errors='ignore')
             if not has_refs:
-                findings.append((p, i, 'PHASE_DONE_CLAIM', line.strip()))
+                findings.append((rel, i, 'PHASE_DONE_CLAIM', line.strip()))
 
     return findings
 
@@ -97,16 +102,20 @@ def main():
     ap.add_argument('--report', default='docs/SINS_REPORT.md')
     args = ap.parse_args()
 
-    all_findings = []
-    for p in iter_files(Path(args.root)):
-        all_findings.extend(scan_file(p))
+    root = Path(args.root).resolve()
+    files = list(iter_files(root))
 
-    Path(args.report).parent.mkdir(parents=True, exist_ok=True)
+    all_findings = []
+    for p in files:
+        all_findings.extend(scan_file(p, root))
+
+    report = (root / args.report).resolve() if not Path(args.report).is_absolute() else Path(args.report)
+    report.parent.mkdir(parents=True, exist_ok=True)
     lines = [
         '# SINS_REPORT',
         '',
-        f'- scanned_root: `{Path(args.root).resolve()}`',
-        f'- files_scanned: {sum(1 for _ in iter_files(Path(args.root)))}',
+        '- scanned_root: `.`',
+        f'- files_scanned: {len(files)}',
         f'- findings_count: {len(all_findings)}',
         '',
         '## Findings',
@@ -114,10 +123,10 @@ def main():
     if not all_findings:
         lines.append('- none')
     else:
-        for p, ln, kind, excerpt in all_findings:
-            lines.append(f'- [{kind}] `{p.as_posix()}:{ln}` — `{excerpt}`')
+        for rel, ln, kind, excerpt in all_findings:
+            lines.append(f'- [{kind}] `{rel}:{ln}` — `{excerpt}`')
 
-    Path(args.report).write_text('\n'.join(lines) + '\n', encoding='utf-8')
+    report.write_text('\n'.join(lines) + '\n', encoding='utf-8')
 
     if all_findings:
         print(f'[FAIL] check_sins findings={len(all_findings)}')
