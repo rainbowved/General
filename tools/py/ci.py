@@ -41,10 +41,20 @@ def run_step(step: str, cmd: str):
         proc = subprocess.run(cmd, shell=True, stdout=lf, stderr=subprocess.STDOUT)
     if proc.returncode == 0:
         step_status(step, 'OK')
-    else:
-        step_status(step, 'ERROR')
-        w(f'[ERROR] Step {step} failed. See {log}')
-        raise SystemExit(2)
+        return
+
+    step_status(step, 'ERROR')
+    w(f'[ERROR] Step {step} failed. See {log}')
+    try:
+        lines = log.read_text(encoding='utf-8', errors='ignore').splitlines()
+    except OSError:
+        lines = []
+    if lines:
+        tail = lines[-40:]
+        w(f'[ERROR] Last {len(tail)} line(s) from {log}:')
+        for line in tail:
+            w(f'  {line}')
+    raise SystemExit(2)
 
 
 def has(path: str) -> bool:
