@@ -24,8 +24,20 @@ def parse_phase_target() -> int:
     return value
 
 
+def parse_step_timeout_sec() -> int:
+    raw = os.getenv('CI_STEP_TIMEOUT_SEC', '300').strip()
+    try:
+        value = int(raw)
+    except ValueError as exc:
+        raise SystemExit(f"[ERROR] CI_STEP_TIMEOUT_SEC must be an integer, got: {raw!r}") from exc
+    if value <= 0:
+        raise SystemExit(f"[ERROR] CI_STEP_TIMEOUT_SEC must be > 0, got: {value}")
+    return value
+
+
 CI_LEVEL = parse_ci_level()
 PHASE_TARGET = parse_phase_target()
+STEP_TIMEOUT_SEC = parse_step_timeout_sec()
 
 LOGS = Path('_logs')
 LOGS.mkdir(parents=True, exist_ok=True)
@@ -59,7 +71,12 @@ def run_step(step: str, cmd: str):
     w(f'[STEP] {step}')
     w(f'[CMD]  {cmd}')
     with log.open('w', encoding='utf-8') as lf:
-        proc = subprocess.run(cmd, shell=True, stdout=lf, stderr=subprocess.STDOUT)
+        try:
+            proc = subprocess.run(cmd, shell=True, stdout=lf, stderr=subprocess.STDOUT, timeout=STEP_TIMEOUT_SEC)
+        except subprocess.TimeoutExpired:
+            step_status(step, 'ERROR')
+            w(f'[ERROR] Step {step} timed out after {STEP_TIMEOUT_SEC}s. See {log}')
+            raise SystemExit(2)
     if proc.returncode == 0:
         step_status(step, 'OK')
         return
@@ -85,7 +102,7 @@ def has(path: str) -> bool:
 def main():
     CI_LOG.write_text('', encoding='utf-8')
     w('== CI v3.7 ==')
-    w(f'CI_LEVEL={CI_LEVEL} PHASE_TARGET={PHASE_TARGET}')
+    w(f'CI_LEVEL={CI_LEVEL} PHASE_TARGET={PHASE_TARGET} CI_STEP_TIMEOUT_SEC={STEP_TIMEOUT_SEC}')
 
     req = {
         'check_sins': 1,
